@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Vent Ledger \u2014 biosignature plausibility explorer</title>
+<title>The Vent Ledger — biosignature plausibility explorer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -70,48 +70,58 @@ body{
   max-width:62ch;
   margin:0 0 8px;
 }
-.disclaimer{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-top:22px;
-  padding:9px 14px;
-  background:var(--bg-panel);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  font-size:13px;
+.meta-strip{
+  margin-top:26px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:10px 0;
+  font-size:12.5px;
   color:var(--text-muted);
-  max-width:62ch;
+  line-height:1.6;
+  max-width:78ch;
 }
-.disclaimer strong{color:var(--accent-amber); font-weight:500;}
-.source-link{
-  font-size:13px;
-  color:var(--text-muted);
-  margin-top:16px;
+.meta-tag{
+  font-family:'IBM Plex Mono',monospace;
+  color:var(--accent-amber);
+  font-size:10.5px;
+  letter-spacing:0.04em;
+  background:rgba(232,163,61,0.1);
+  padding:2px 7px;
+  border-radius:2px;
+  margin-right:10px;
+  flex-shrink:0;
 }
-.source-link a{color:var(--accent-mineral); text-decoration:none; border-bottom:1px solid rgba(63,167,150,0.35);}
-.source-link a:hover{border-bottom-color:var(--accent-mineral);}
+.meta-text{color:var(--text-muted);}
+.meta-text a{color:var(--accent-mineral); text-decoration:none; border-bottom:1px solid rgba(63,167,150,0.35);}
+.meta-text a:hover{border-bottom-color:var(--accent-mineral);}
+.meta-divider{flex-basis:100%; height:0;}
 
-/* how-to */
+/* how-to: single slim strip */
 .howto-wrap{max-width:920px; margin:0 auto; padding:0 32px 8px;}
-.howto{
+.howto-strip{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 28px;
+  padding:14px 22px;
   border:1px solid var(--line);
   border-radius:var(--radius);
-  padding:22px 26px;
-  background:linear-gradient(180deg, rgba(63,167,150,0.06), rgba(63,167,150,0));
+  background:rgba(63,167,150,0.04);
 }
-.howto h2{
-  font-family:'Zilla Slab',serif;
-  font-size:16px;
-  font-weight:600;
-  margin:0 0 16px;
+.howto-strip-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;
+  letter-spacing:0.05em;
   color:var(--accent-mineral);
+  flex-shrink:0;
 }
-.howto-steps{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
-@media (max-width:760px){ .howto-steps{grid-template-columns:1fr;} }
-.howto-step{display:flex; gap:12px; font-size:13.5px; color:var(--text-muted); line-height:1.55;}
-.howto-step strong{color:var(--text-primary); font-weight:500;}
-.howto-num{color:var(--accent-sulfur); font-size:12px; flex-shrink:0; padding-top:2px;}
+.howto-item{font-size:13px; color:var(--text-muted);}
+.howto-item strong{color:var(--text-primary); font-weight:500;}
+.howto-num{color:var(--accent-sulfur); font-family:'IBM Plex Mono',monospace; font-size:11.5px; margin-right:2px;}
+@media (max-width:760px){ .howto-strip{flex-direction:column; align-items:flex-start; gap:10px;} }
 
 
 /* ---------- Main layout ---------- */
@@ -363,29 +373,20 @@ footer .foot-grid{
   <p class="eyebrow mono">THERMOBASE BIOSIGNATURE PLAUSIBILITY EXPLORER</p>
   <h1>If we detected this gas out there, would it mean life?</h1>
   <p>Set a hypothetical environment's temperature, pH, and oxygen regime. This tool looks at which known thermophilic metabolisms could plausibly survive there, and weighs the gases they'd produce against how easily each one could come from ordinary geology instead of biology.</p>
-  <div class="disclaimer">
-    <span><strong>Research prototype, not a detection instrument.</strong> Built from a 512-organism thermophile dataset. Probabilities are correlational, not mechanistic \u2014 treat this as a hypothesis-generating lens, not a verdict.</span>
+  <div class="meta-strip">
+    <span class="meta-tag">RESEARCH PROTOTYPE</span>
+    <span class="meta-text">Not a detection instrument. Built from a 512-organism thermophile dataset; probabilities are correlational — a hypothesis-generating lens, not a verdict.</span>
+    <span class="meta-divider"></span>
+    <span class="meta-text">Built on <a href="https://doi.org/10.1371/journal.pone.0268253" target="_blank" rel="noopener">ThermoBase</a> (DiGiacomo, McKay &amp; Davila, 2022, <em>PLOS ONE</em>, CC0) — <a href="https://ahed.nasa.gov/datasets/e6e6ade4a91fee03d9f99ea19602/t3c34s" target="_blank" rel="noopener">view the original dataset →</a></span>
   </div>
-  <p class="source-link">Built on <a href="https://doi.org/10.1371/journal.pone.0268253" target="_blank" rel="noopener">ThermoBase</a> (DiGiacomo, McKay &amp; Davila, 2022, <em>PLOS ONE</em>, CC0 public domain) \u2014 <a href="https://ahed.nasa.gov/datasets/e6e6ade4a91fee03d9f99ea19602/t3c34s" target="_blank" rel="noopener">view the original dataset at NASA AHED \u2192</a></p>
 </div>
 
 <div class="howto-wrap">
-  <div class="howto">
-    <h2>How to use this</h2>
-    <div class="howto-steps">
-      <div class="howto-step">
-        <span class="howto-num mono">01</span>
-        <div><strong>Set a hypothetical environment.</strong> Drag the temperature and pH sliders, or jump straight to a real analog site with the presets below the controls.</div>
-      </div>
-      <div class="howto-step">
-        <span class="howto-num mono">02</span>
-        <div><strong>Read the pathway bars.</strong> These show how physiologically plausible each metabolism is at those conditions, based on real thermophile tolerance data.</div>
-      </div>
-      <div class="howto-step">
-        <span class="howto-num mono">03</span>
-        <div><strong>Open a species card.</strong> Click any candidate gas to read what it is, where it's shown up in real missions, and what its risk rating actually means \u2014 not just a number.</div>
-      </div>
-    </div>
+  <div class="howto-strip">
+    <span class="howto-strip-label">HOW TO USE THIS</span>
+    <span class="howto-item"><span class="howto-num mono">01</span> <strong>Set an environment</strong> — drag the sliders or pick a preset</span>
+    <span class="howto-item"><span class="howto-num mono">02</span> <strong>Read the pathway bars</strong> — physiological plausibility at those conditions</span>
+    <span class="howto-item"><span class="howto-num mono">03</span> <strong>Open a species card</strong> — real missions, and what the risk rating means</span>
   </div>
 </div>
 
@@ -394,9 +395,9 @@ footer .foot-grid{
     <h2>Environment</h2>
 
     <div class="control">
-      <div class="control-label"><span>Temperature</span><span class="value" id="tempValue">70\u00b0C</span></div>
+      <div class="control-label"><span>Temperature</span><span class="value" id="tempValue">70°C</span></div>
       <input type="range" id="tempSlider" min="35" max="109" step="2" value="70">
-      <div class="range-bounds"><span>35\u00b0C</span><span>109\u00b0C</span></div>
+      <div class="range-bounds"><span>35°C</span><span>109°C</span></div>
     </div>
 
     <div class="control">
@@ -432,11 +433,11 @@ footer .foot-grid{
   <div class="foot-grid">
     <div>
       <strong style="color:var(--text-primary)">Method, in brief</strong><br>
-      Random-forest models trained per metabolic pathway on ThermoBase organisms' own temperature, pH, and oxygen tolerance data predict which pathways could survive the chosen conditions. A literature-derived mapping table then translates surviving pathways into candidate gases and flags how easily each gas could also form abiotically (e.g. methane via serpentinization, H\u2082S via volcanic outgassing).
+      Random-forest models trained per metabolic pathway on ThermoBase organisms' own temperature, pH, and oxygen tolerance data predict which pathways could survive the chosen conditions. A literature-derived mapping table then translates surviving pathways into candidate gases and flags how easily each gas could also form abiotically (e.g. methane via serpentinization, H₂S via volcanic outgassing).
     </div>
     <div>
       <strong style="color:var(--text-primary)">Limitations</strong><br>
-      ThermoBase covers thermophiles only \u2014 conditions outside its observed range (40\u201110</br>6\u00b0C, pH 0.7\u20139.5) return no prediction rather than a guess. Pathway probabilities are correlational, drawn from a single dataset, and do not model reaction thermodynamics directly.
+      ThermoBase covers thermophiles only — conditions outside its observed range (40–106°C, pH 0.7–9.5) return no prediction rather than a guess. Pathway probabilities are correlational, drawn from a single dataset, and do not model reaction thermodynamics directly.
     </div>
   </div>
 </footer>
